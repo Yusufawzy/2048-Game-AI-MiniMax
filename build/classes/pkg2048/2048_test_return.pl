@@ -3,7 +3,8 @@
 :- dynamic(getCurrentScore/2).
 
 % Default depth is 4, but you can run it specifying any depth w han5lls bokra isa w mem 3alya bs better inny aksb.start :-
-start(B):- play1(B).
+start(B):-write("Enter 1 to start with an initial state, 2 to enter your specific state:"),nl,
+read(Init), ((Init is 1 -> play1(B));play2(B)).
 
 %==========================================================================================
 
@@ -12,7 +13,7 @@ start(B):- play1(B).
 play1(FinalRes) :-
 	Board = [256,0,0,0,		0,0,0,256		,0,1024,0,0,		0,512,0,4],
 	%Board= [0,4,0,0,		4,0,0,0		,0,0,0,0,		0,0,0,0],
-	Depth =3,
+	Depth =4,
 	set_prolog_stack(global,limit(10*(10**9))),set_prolog_stack(local,limit(10*(10**9))),
 	append(Board,[],TempRes), %I want to say that I'm having a Board add it to current list'
 	loop(Board, Depth,TempRes,FinalRes).

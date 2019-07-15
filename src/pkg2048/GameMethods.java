@@ -6,6 +6,7 @@
 package pkg2048;
 
 import java.awt.Color;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jpl7.Query;
@@ -18,11 +19,13 @@ import org.jpl7.Term;
 public class GameMethods extends Thread {
 
     public void paintscreen() throws InterruptedException {
-        String t1 = "consult('F:\\My Apps\\Done\\Artificial-Intelligence\\2048 Game\\My Final 2048\\gui\\src\\pkg2048\\2048_test_return.pl')";
+        String cwd = new File("").getAbsolutePath().replace('\\', '/');
+        String t1 = "consult('" + cwd + "/2048_gui.pl')";
         Query q1 = new Query(t1);
+        System.out.println(cwd);
         System.out.println(q1.hasSolution() ? "works" : "fails");
 
-       // String t2 = "play1(B)";
+        // String t2 = "play1(B)";
         String t2 = "start(B)";
 
         Query q2 = new Query(t2);
@@ -63,26 +66,25 @@ public class GameMethods extends Thread {
                 NewJFrame.allbuttons.get(i).setBackground(Color.GRAY);
             }
             i++;
-            if(i%16==0){
-                i=0;
+            if (i % 16 == 0) {
+                i = 0;
+            }
+            Thread.sleep(10);
+
         }
-        Thread.sleep(10);
 
     }
 
-}
-
-@Override
-        public void run(){
+    @Override
+    public void run() {
         try {
             paintscreen();
-        
 
-} catch (InterruptedException ex) {
+        } catch (InterruptedException ex) {
             Logger.getLogger(GameMethods.class
-.getName()).log(Level.SEVERE, null, ex);
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-         
+
 }
