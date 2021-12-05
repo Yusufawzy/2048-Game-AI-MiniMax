@@ -1,2 +1,2 @@
 # 2048 Game AI MiniMax
- This program solves the 2048 puzzle using minimax algorithm, a recursive algorithm for choosing the next move in an n-player game. The backend is in Prolog and the GUI is in Java.
+An intelligent agent to solve the 2048 game using minimax and uninformed search algorithms; Prolog as backend, and Java GUI as frontend.
